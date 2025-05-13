@@ -21,15 +21,19 @@ users.addEventListener('click', () => {
     .then ((data)=> {
         usersList.innerHTML = `
         ${data.map(user => `
-        <div class='contList'
+        <div class='contList'>
             <h2>${user.nombre} ${user.apellidos}</h2>
             <p><strong>Email: </strong>${user.correo}</p>
-            <ul class='colection'>
-                <li><strong>Colección: </strong>${user.coleccion}</li>
+            <div class='colection'>
+                <p><strong>Colección: </strong></p>
+                <ul class='colection'>${user.coleccion.split(',').map(book => `<li>${book.trim()}</li>`).join('')}
             </ul>
-            <ul class='wishList'>
-                <li><strong>Wishlist: </strong>${user.wishlist}</li>
+            </div>
+            <div class='wishList'>
+                <p><strong>Wishlist: </strong></p>
+                <ul class='wishlist'>${user.wishlist.split(',').map(book => `<li>${book.trim()}</li>`).join('')}
             </ul>
+            </div>
         </div>
         `).join('')}`;
 
