@@ -4,6 +4,7 @@ const usersList = document.getElementById('usersList');
 const bookList = document.getElementById('booksList');
 
 const endPointUsers = 'http://localhost:3000/users';
+const endPointBooks = 'http://localhost:3000/books';
 
 
 function getUsers() {
@@ -52,6 +53,34 @@ users.addEventListener('click', () => {
         .catch ((error) => {console.error('Error al cargar usuarios: error');
     usersList.innerHTML = '<p>Error al cargar los usuarios</p>';
     })
+})
 
-  
-  })
+function getBooks() {
+    return fetch(endPointBooks)
+
+    .then ((response) => {
+        if(!response.ok) {
+            throw new Error(`Error: ${response.status}`)
+        }
+        return response.json()})
+}
+
+books.addEventListener('click', () => {
+    getBooks() 
+    .then ((data)=> {
+        booksList.innerHTML = `
+        ${data.map(book => `
+        <div class='contList'>
+            <h2>${book.titulo}</h2>
+            <p><img class="image" src="${book.imagen}" alt="${book.titulo}"</p>
+            <div class='infoBook'>
+                <p><strong>Autor: </strong>${book.autor}</p>
+                <p><strong>Año de publicación: </strong>${book.fechaPublicacion}</p>
+            </div>
+        </div>
+        `).join('')}`;
+        })
+        .catch ((error) => {console.error('Error al cargar usuarios: error');
+    usersList.innerHTML = '<p>Error al cargar los usuarios</p>';
+    })
+})

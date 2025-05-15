@@ -22,9 +22,9 @@ h1 {
 }
 
 .container {
-    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    display: inline-table;
 }
 
 button {
@@ -51,7 +51,7 @@ button:hover {
    width: 100%;
 }
 
-#userList, #booksList {
+#usersList, #booksList {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -60,7 +60,7 @@ button:hover {
 }
 
 .contList {
-    background-color: #f0f0e0;
+    background-color: #c4c498;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 10px;
@@ -88,6 +88,12 @@ button:hover {
     color: #333;
 }
 
+.image {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+}
+
 .colection, .wishlist {
     display:flex;
     flex-direction: column;
@@ -101,7 +107,7 @@ button:hover {
  }
 
  .colection li, .wishlist li{
-    background-color: #fff;
+    background-color: #e6d9d9b6;
     padding: 8px;
     margin: 5px 0;
     border-radius: 5px;
